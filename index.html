@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
   <title>Vermelho Melides — Cocktail Menu</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -10,6 +11,35 @@
     #__bundler_thumbnail { position: fixed; inset: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #f6f3ee; z-index: 9999; }
     #__bundler_thumbnail svg { width: 100%; height: 100%; object-fit: contain; }
     #__bundler_placeholder { color: #999; font-size: 14px; }
+    /* Mobile: iPhone < 600px */
+    @media (max-width: 599px) {
+      body { align-items: flex-start; }
+      #__bundler_thumbnail { align-items: flex-start; padding-top: 0; }
+      #__bundler_thumbnail svg { width: 100vw; height: auto; object-fit: fill; }
+      #__bundler_loading { bottom: 10px; right: 10px; font-size: 12px; padding: 6px 10px; }
+
+      /* Remove body padding on mobile */
+      body { padding: 0 !important; }
+
+      /* Main page container - full width */
+      .page { width: 100vw !important; max-width: 100vw !important; overflow-x: hidden !important; }
+
+      /* Shrink first and last child divs (likely left/right columns) */
+      .page > div:first-child,
+      .page > div:last-child { max-width: 60px !important; min-width: 0 !important; overflow: hidden !important; flex-shrink: 1 !important; }
+
+      /* All images max width */
+      .page img { max-width: 100% !important; height: auto !important; }
+
+      /* Shrink absolutely positioned column images */
+      .page img[style*="position"],
+      .page [style*="position: absolute"] img { max-width: 60px !important; width: 60px !important; }
+    }
+    /* Tablet: iPad >= 768px */
+    @media (min-width: 768px) {
+      #__bundler_thumbnail { padding: 20px; }
+      #__bundler_thumbnail svg { max-width: 700px; width: 100%; height: auto; object-fit: contain; }
+    }
   </style>
   <noscript>
     <style>#__bundler_loading { display: none; }</style>
